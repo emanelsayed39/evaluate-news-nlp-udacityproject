@@ -5,12 +5,14 @@ import './styles/form.scss';
 import './styles/header.scss';
 
 import handleSubmit from './js/formHandler';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
-window.addEventListener("DOMContentLoaded",()=>{
+/*window.addEventListener("DOMContentLoaded",()=>{
     const button=document.getElementById('btnSubmit');
     button.addEventListener('click',(e)=>{
     handleSubmit(e);
     });
-}) ;
+}) ;*/
 
 export {handleSubmit};
