@@ -2,7 +2,7 @@ var path = require('path');
 const express = require('express');
 const cors=require('cors');
 //const Parser=require("body-parser")
-const mockAPIResponse = require('./mockAPI.js');
+const API = require('./meaningCloudAPI.js');
 
 const app = express();
 
@@ -31,9 +31,10 @@ app.use(express.static('dist'))
 
 
 app.get('/', function (req, res) {
-    // res.sendFile('dist/index.html')
+    
     try
     {
+        // res.sendFile('dist/index.html')
         res.sendFile(path.resolve('src/client/views/index.html'))
     }
     catch(error)
@@ -46,13 +47,13 @@ app.get('/', function (req, res) {
 app.post('/submit', async function (req, res) {
   let url=req.body.url;
 
-    console.log(url)
+
     //return
    //  url='https://www.shrm.org/resourcesandtools/hr-topics/benefits/pages/best-benefits-practices-for-the-gig-economy.aspx';
  
-
-   const result=await mockAPIResponse(url);
-  // console.log(JSON.stringify(result["status"].msg))
+   console.log(url)
+   const result=await API(url);
+ // console.log(JSON.stringify(result["status"].msg))
    if (result !== "error" && result["status"].msg==="OK")
    {
        
@@ -66,10 +67,9 @@ app.post('/submit', async function (req, res) {
             confidence:result.confidence,
             irony:result.irony
         }
-console.log(retValue);
+       // console.log(retValue);
         res.status(200).send(JSON.stringify(retValue)); 
-        
-    }
+     }
 
     else{
         console.log("post error external");
@@ -88,5 +88,5 @@ app.listen(Port, function () {
 })
 
 app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
+    res.send(API)
 })
