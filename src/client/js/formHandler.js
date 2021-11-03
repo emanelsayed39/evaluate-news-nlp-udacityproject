@@ -1,7 +1,7 @@
 import {checkForName} from './nameChecker';
 const serverURL='http://localhost:8001/submit';
 
-const post=async (url,data)=>
+const postback=async (url,data)=>
 {
     console.log(data);
     //console.log(JSON.stringify(data));
@@ -33,31 +33,35 @@ const post=async (url,data)=>
                div.innerHTML +=`<br/>irony : ${res.irony}`;
                div.innerHTML +=`<br/>score_tag : ${res.score_tag}`;
                document.getElementById('results').append(div);
+               return true;
         }
         else
         {
             resultdiv.innerHTML=res.msg;
-        }
+            return false;        }
 
     })
 }
 catch(error){
 alert("error while getting the data")
+return false;
 }
-   };
+};
 
     // check what text was put into the form field
-    const handleSubmit=async(event)=>{
+ const handleSubmit=async(event)=>{
         event.preventDefault();
       
        const formText = document.getElementById('name').value
        // const formText='https://www.shrm.org/resourcesandtools/hr-topics/benefits/pages/best-benefits-practices-for-the-gig-economy.aspx';
         if (checkForName(formText)){
             console.log("::: Form Submitted :::")
-            post('http://localhost:8001/submit',{url:formText})
+            const succ=  postback('http://localhost:8001/submit',{url:formText})
+            return true;
         }
         else{
             alert("Please enter a valid URL")
+            return false;
         }
     };
 
