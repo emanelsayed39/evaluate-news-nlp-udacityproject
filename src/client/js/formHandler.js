@@ -20,9 +20,11 @@ const post=async (url,data)=>
     .then(res=>{
        // console.log("fetch complete ");
         //console.log(res);//res => res.json()
-        
-        
-               // document.getElementById('results').innerHTML 
+        const resultdiv= document.getElementById('results')
+        console.log(res)
+        if (res.error==="0")
+        {
+            resultdiv.innerHTML="";
                var div = document.createElement("div");
                div.innerHTML +=`Text : ${res.text}`;
                div.innerHTML +=`<br/> agreement : ${res.agreement}`;
@@ -31,6 +33,11 @@ const post=async (url,data)=>
                div.innerHTML +=`<br/>irony : ${res.irony}`;
                div.innerHTML +=`<br/>score_tag : ${res.score_tag}`;
                document.getElementById('results').append(div);
+        }
+        else
+        {
+            resultdiv.innerHTML=res.msg;
+        }
 
     })
 }
@@ -42,7 +49,7 @@ alert("error while getting the data")
     // check what text was put into the form field
     const handleSubmit=async(event)=>{
         event.preventDefault();
-        console.log("hello");
+      
        const formText = document.getElementById('name').value
        // const formText='https://www.shrm.org/resourcesandtools/hr-topics/benefits/pages/best-benefits-practices-for-the-gig-economy.aspx';
         if (checkForName(formText)){
