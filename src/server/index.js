@@ -52,25 +52,28 @@ app.post('/submit', async function (req, res) {
  
 
    const result=await mockAPIResponse(url);
-   if (result !== "error"){
-        console.log(result)
-        // console.log(JSON.stringify(result))
+  // console.log(JSON.stringify(result["status"].msg))
+   if (result !== "error" && result["status"].msg==="OK")
+   {
+       
+        console.log(JSON.stringify(result))
         const retValue={
-            text:result.sentence_list[0].text,
+            error:"0",
+            text:result.sentence_list && result.sentence_list.length!=0?result.sentence_list[0].text:'',
             score_tag:result.score_tag,
             agreement:result.agreement,
             subjectivity:result.subjectivity,
             confidence:result.confidence,
             irony:result.irony
         }
-
+console.log(retValue);
         res.status(200).send(JSON.stringify(retValue)); 
         
     }
 
     else{
-        console.log("post error");
-        res.status(200).send({error:1 ,msg: "server error"});
+        console.log("post error external");
+        res.status(200).send({error:"1" ,msg: "SERVER ERROR"});
     }
    
    
