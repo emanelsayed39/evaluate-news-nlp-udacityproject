@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const WorkboxPlugin = require('workbox-webpack-plugin')
+
 //const babe_core=require("babel-core/register");
 //const babel_polyfill=require("babel-polyfill");
 
@@ -12,10 +13,10 @@ module.exports = {
     devtool: 'source-map',
    // stats: 'verbose',
     stats: 'minimal',
-   // output:{
-   //     libraryTarget: 'var',
-   //     library: 'Client',
-   // },
+    output:{
+        libraryTarget: 'var',
+       library: 'Client',
+    },
     module: {
         rules: [
             {

@@ -5,6 +5,7 @@ import './styles/form.scss';
 import './styles/header.scss';
 
 import handleSubmit from './js/formHandler';
+import post from  './js/formHandler';
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
@@ -15,4 +16,4 @@ import "regenerator-runtime/runtime";
     });
 }) ;*/
 
-export {handleSubmit};
+export {handleSubmit,post};

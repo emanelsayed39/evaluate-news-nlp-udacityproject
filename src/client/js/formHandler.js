@@ -1,12 +1,14 @@
 import {checkForName} from './nameChecker';
+
 const serverURL='http://localhost:8001/submit';
 
-const postback=async (url,data)=>
+ 
+const post=async (data)=>
 {
-    console.log(data);
+   // console.log(data);
     //console.log(JSON.stringify(data));
     try{
-    const result=await fetch(url,{
+    const result=await fetch(serverURL,{
         method: "POST",
         credentials: "same-origin",
         mode:'cors',
@@ -43,7 +45,7 @@ const postback=async (url,data)=>
     })
 }
 catch(error){
-alert("error while getting the data")
+console.log(error)
 return false;
 }
 };
@@ -55,14 +57,20 @@ return false;
        const formText = document.getElementById('name').value
        // const formText='https://www.shrm.org/resourcesandtools/hr-topics/benefits/pages/best-benefits-practices-for-the-gig-economy.aspx';
         if (checkForName(formText)){
-            console.log("::: Form Submitted :::")
-            const succ=  postback('http://localhost:8001/submit',{url:formText})
-            return true;
+           // console.log("::: Form Submitted :::")
+            const succ=  post({url:formText})
+            if (succ===false)
+            {
+
+            alert("error while getting the data")
+
+            }
+           
         }
         else{
             alert("Please enter a valid URL")
-            return false;
+        
         }
     };
 
-export default handleSubmit
+export {handleSubmit,post}

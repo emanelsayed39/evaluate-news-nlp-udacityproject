@@ -1,7 +1,11 @@
 # Evaluated a news article with Natural Language processing 
 
-This is the starter template for a final assessment project for Udacity's React Fundamentals course. 
+This is the third udacity project 
+the app use the sentiment Api to analyse text or webpages  
 
+API Setup
+to setup the API create a .env file include the API key
+in the formate  API_KEY="**********************"
 
 ## TL;DR
 
@@ -9,7 +13,7 @@ To get started developing right away:
 
 * install all project dependencies with `npm install`
 
-* start the development server with `npm start`
+* start the  server with `npm start`
 
 * start the test using with `npm run test`
 
