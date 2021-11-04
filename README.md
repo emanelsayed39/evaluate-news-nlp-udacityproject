@@ -7,6 +7,9 @@ API Setup
 to setup the API create a .env file include the API key
 in the formate  API_KEY="**********************"
 
+server PORT  : 8001
+development port : 8080
+
 ## TL;DR
 
 To get started developing right away:

@@ -34,7 +34,7 @@ app.get('/', function (req, res) {
     
     try
     {
-        res.sendFile('../dist/index.html')
+        res.sendFile('dist/index.html')
       // res.sendFile(path.resolve('src/client/views/index.html'))
     }
     catch(error)

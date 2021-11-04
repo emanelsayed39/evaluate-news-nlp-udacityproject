@@ -56,21 +56,17 @@ return false;
       
        const formText = document.getElementById('name').value
        // const formText='https://www.shrm.org/resourcesandtools/hr-topics/benefits/pages/best-benefits-practices-for-the-gig-economy.aspx';
-        if (checkForName(formText)){
+        if (Client.checkForName(formText)){
            // console.log("::: Form Submitted :::")
-            const succ=  post({url:formText})
+            const succ=  Client.post({url:formText})
             if (succ===false)
             {
-
             alert("error while getting the data")
-
             }
-           
         }
-        else{
+            else{
             alert("Please enter a valid URL")
-        
-        }
+            }
     };
 
 export {handleSubmit,post}
